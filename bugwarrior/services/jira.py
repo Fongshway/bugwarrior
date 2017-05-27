@@ -149,7 +149,11 @@ class JiraIssue(Issue):
             sprint = _parse_sprint_string(sprint)
             # Extract the name and render it into a label
             context.update({'label': sprint['name'].replace(' ', '')})
-            tags.append(label_template.render(context))
+            # Check for active sprint
+            if sprint['state'] == 'ACTIVE':
+                tags.append(label_template.render(context))
+            else:
+                pass
 
         return tags
 
