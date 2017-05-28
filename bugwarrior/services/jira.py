@@ -154,7 +154,8 @@ class JiraIssue(Issue):
             context.update({'label': sprint['name'].replace(' ', '')})
             # Check for active sprint
             if sprint['state'] == 'ACTIVE':
-                tags.append(label_template.render(context))
+                sprint_to_add = label_template.render(context)
+                tags.append(sprint_to_add[15:])
             else:
                 pass
 
