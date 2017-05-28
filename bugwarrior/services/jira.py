@@ -1,4 +1,7 @@
 from __future__ import absolute_import
+
+from decimal import Decimal
+
 from builtins import str
 
 
@@ -193,7 +196,8 @@ class JiraIssue(Issue):
         if self.extra.get('jira_version') == 4:
             return self.record['fields']['timeestimate']['value']
         try:
-            return self.record['fields']['timeestimate'] / 60 / 60
+            seconds = Decimal(self.record['fields']['timeestimate'])
+            return round(seconds / 3600, 1)
         except (TypeError, KeyError):
             return None
 
