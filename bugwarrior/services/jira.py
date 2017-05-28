@@ -53,6 +53,7 @@ def _parse_sprint_string(sprint):
     return dict(zip(fields[::2], fields[1::2]))
 
 class JiraIssue(Issue):
+    ISSUE_TYPE = 'jiraissuetype'
     SUMMARY = 'jirasummary'
     URL = 'jiraurl'
     FOREIGN_ID = 'jiraid'
@@ -64,6 +65,10 @@ class JiraIssue(Issue):
     DUE_BY = 'jiraduedate'
 
     UDAS = {
+        ISSUE_TYPE: {
+            'type': 'string',
+            'label': 'Issue Type'
+        },
         SUMMARY: {
             'type': 'string',
             'label': 'Jira Summary'
@@ -126,6 +131,7 @@ class JiraIssue(Issue):
             'entry': self.get_entry(),
             'due': self.get_duedate(),
 
+            self.ISSUE_TYPE: self.get_issue_type(),
             self.URL: self.get_url(),
             self.FOREIGN_ID: self.record['key'],
             self.DESCRIPTION: self.record.get('fields', {}).get('description'),
@@ -255,6 +261,8 @@ class JiraIssue(Issue):
     def get_status(self):
         return self.record['fields']['status']['name']
 
+    def get_issue_type(self):
+        return self.record['fields']['issuetype']['name']
 
 class JiraService(IssueService):
     ISSUE_CLASS = JiraIssue
