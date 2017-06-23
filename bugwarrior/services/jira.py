@@ -224,9 +224,10 @@ class JiraIssue(Issue):
         return self.origin['url'] + '/browse/' + self.record['key']
 
     def get_summary(self):
+        length = self.origin['description_length']
         if self.extra.get('jira_version') == 4:
-            return self.record['fields']['summary']['value']
-        return self.record['fields']['summary']
+            return self.record['fields']['summary']['value'][0:length]
+        return self.record['fields']['summary'][0:length]
 
     def get_estimate(self):
         if self.extra.get('jira_version') == 4:
@@ -301,6 +302,9 @@ class JiraService(IssueService):
         self.import_due_dates = self.config.get(
             'import_due_dates', default=False, to_type=asbool
         )
+        self.description_length = self.config.get(
+            'description_length', default=100, to_type=int
+        )
         self.sprint_field_names = []
         if self.import_sprints_as_tags:
             field_names = [field for field in self.jira.fields()
@@ -326,6 +330,7 @@ class JiraService(IssueService):
             'import_sprints_as_tags': self.import_sprints_as_tags,
             'sprint_field_names': self.sprint_field_names,
             'label_template': self.label_template,
+            'description_length': self.description_length,
         }
 
     @classmethod
