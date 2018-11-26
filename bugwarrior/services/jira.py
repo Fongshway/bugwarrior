@@ -60,6 +60,7 @@ class JiraIssue(Issue):
     ESTIMATE = 'jiraestimate'
     FIX_VERSION = 'jirafixversion'
     CREATED_AT = 'jiracreatedts'
+    STATUS ='jirastatus'
 
     UDAS = {
         SUMMARY: {
@@ -89,6 +90,10 @@ class JiraIssue(Issue):
         CREATED_AT: {
             'type': 'date',
             'label': 'Created At'
+        },
+        STATUS: {
+            'type': 'string',
+            'label': "Jira Status"
         },
     }
     UNIQUE_KEY = (URL, )
@@ -120,7 +125,8 @@ class JiraIssue(Issue):
             self.DESCRIPTION: self.record.get('fields', {}).get('description'),
             self.SUMMARY: self.get_summary(),
             self.ESTIMATE: self.get_estimate(),
-            self.FIX_VERSION: self.get_fix_version()
+            self.FIX_VERSION: self.get_fix_version(),
+            self.STATUS: self.get_status()
         }
 
     def get_entry(self):
@@ -226,6 +232,9 @@ class JiraIssue(Issue):
             return self.record['fields'].get('fixVersions', [{}])[0].get('name')
         except (IndexError, KeyError, AttributeError, TypeError):
             return None
+
+    def get_status(self):
+        return self.record['fields']['status']['name']
 
 
 class JiraService(IssueService):
