@@ -1,0 +1,31 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+bugwarrrior = {editable = true, extras = ["activecollab", "bts", "bugzilla", "gmail", "jira", "megaplan", "trac"], path = "."}
+chardet = "*"
+click = "*"
+"dogpile.cache" = "*"
+future = "*"
+httplib2 = "*"
+Jinja2 = "*"
+kitchen = "*"
+lockfile = "*"
+MarkupSafe = "*"
+python-dateutil = "*"
+pytz = "*"
+requests = "*"
+six = "*"
+urllib3 = "*"
+
+[dev-packages]
+codecov = "*"
+coverage = "*"
+mock = "*"
+nose = "*"
+responses = "*"
+
+[requires]
+python_version = "3.7"
