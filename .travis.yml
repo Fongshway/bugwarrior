@@ -1,9 +1,9 @@
 language: python
 python:
- - "2.7"
- - "3.4"
- - "3.5"
- - "3.6"
+  - "2.7"
+  - "3.4"
+  - "3.5"
+  - "3.6"
 before_install:
   - sudo apt-get update -qq
   - sudo apt-get install uuid-dev
@@ -33,6 +33,6 @@ install:
 script: nosetests -w tests --with-coverage --cover-branches --cover-package=bugwarrior -v
 after_success: codecov
 notifications:
-    email: true
+  email: true
     on_success: change
     on_failure: always
