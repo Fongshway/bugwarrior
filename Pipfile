@@ -4,30 +4,28 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-certifi = "*"
+bugwarrrior = {editable = true, extras = ["activecollab", "bts", "bugzilla", "gmail", "jira", "megaplan", "trac"], path = "."}
 chardet = "*"
 click = "*"
 "dogpile.cache" = "*"
 future = "*"
-google-api-python-client = "*"
 httplib2 = "*"
-idna = "*"
 Jinja2 = "*"
-jira = "*"
 kitchen = "*"
 lockfile = "*"
 MarkupSafe = "*"
-oauth2client = "<4"
 python-dateutil = "*"
 pytz = "*"
 requests = "*"
 six = "*"
-taskw = {editable = true, ref = "develop", git = "https://github.com/ralphbean/taskw.git"}
 urllib3 = "*"
 
 [dev-packages]
+codecov = "*"
+coverage = "*"
 mock = "*"
 nose = "*"
+responses = "*"
 
 [requires]
-python_version = "3.6"
+python_version = "3.7"
