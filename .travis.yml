@@ -6,31 +6,28 @@ python:
   - "3.4"
   - "3.5"
   - "3.6"
+env:
+  global:
+    - PYTHON_PIP_VERSION=18.1
+    - PYTHON_PIPENV_VERSION=2018.11.26
+  matrix:
+    - TASKWARRIOR_VERSION=2.4.4
 before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -y uuid-dev pandoc
-  - wget http://taskwarrior.org/download/task-2.4.4.tar.gz
-  - gunzip task-2.4.4.tar.gz
-  - tar xf task-2.4.4.tar
-  - cd task-2.4.4
+  - wget http://taskwarrior.org/download/task-$TASKWARRIOR_VERSION.tar.gz
+  - gunzip task-$TASKWARRIOR_VERSION.tar.gz
+  - tar xf task-$TASKWARRIOR_VERSION.tar
+  - cd task-$TASKWARRIOR_VERSION
   - cmake .
   - make
   - sudo make install
   - task --version
-  - pip install --upgrade pip
-  - pip install taskw
-  - pip install mock
-  - pip install responses
-  - pip install PySimpleSOAP
+  - pip install pip==$PYTHON_PIP_VERSION
+  - pip install pipenv==$PYTHON_PIPENV_VERSION
   - cd $TRAVIS_BUILD_DIR
-env:
-  - JIRAVERSION=1.0.7
-  - JIRAVERSION=1.0.10
 install:
-  - pip install jira==$JIRAVERSION
-  - pip install .[jira,megaplan,activecollab,bts,bugzilla,trac,gmail]
-  - pip install codecov
-  - pip install coverage
+  - pipenv install --deploy --dev
 script: nosetests -w tests --with-coverage --cover-branches --cover-package=bugwarrior -v
 after_success: codecov
 notifications:
