@@ -8,6 +8,7 @@ python:
   - "3.6"
 env:
   global:
+    - PIPENV_VERBOSITY=-1
     - PYTHON_PIP_VERSION=18.1
     - PYTHON_PIPENV_VERSION=2018.11.26
   matrix:
