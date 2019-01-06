@@ -85,6 +85,8 @@ class TestJiraIssue(AbstractServiceTest, ServiceTest):
             'tags': [],
             'entry': datetime.datetime(2016, 6, 6, 13, 7, 8, tzinfo=tzutc()),
             'jirafixversion': '1.2.3',
+            'jiraissuetype': 'Epic',
+            'jirastatus': 'Open',
 
             issue.URL: arbitrary_url,
             issue.FOREIGN_ID: self.arbitrary_record['key'],
