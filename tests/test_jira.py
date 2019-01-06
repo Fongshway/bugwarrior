@@ -40,7 +40,9 @@ class TestJiraIssue(AbstractServiceTest, ServiceTest):
             'summary': arbitrary_summary,
             'timeestimate': arbitrary_estimation,
             'created': '2016-06-06T06:07:08.123-0700',
-            'fixVersions': [{'name': '1.2.3'}]
+            'fixVersions': [{'name': '1.2.3'}],
+            'issuetype': {'name': 'Epic'},
+            'status': {'name': 'Open'}
         },
         'key': '%s-%s' % (arbitrary_project, arbitrary_id, ),
     }
@@ -128,6 +130,8 @@ class TestJiraIssue(AbstractServiceTest, ServiceTest):
             'tags': ['Sprint1'],
             'entry': datetime.datetime(2016, 6, 6, 13, 7, 8, tzinfo=tzutc()),
             'jirafixversion': '1.2.3',
+            'jiraissuetype': 'Epic',
+            'jirastatus': 'Open',
 
             issue.URL: arbitrary_url,
             issue.FOREIGN_ID: record_with_goal['key'],
