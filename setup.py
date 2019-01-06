@@ -30,7 +30,7 @@ setup(name='bugwarrior',
       zip_safe=False,
       install_requires=[
           "requests",
-          "taskw >= 0.8",
+          "taskw>=0.8",
           "python-dateutil",
           "pytz",
           "six>=1.9.0",
