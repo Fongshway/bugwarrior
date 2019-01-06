@@ -1,47 +1,36 @@
 language: python
-# Required for python3.7 and higher.
-dist: xenial
+dist: xenial  # Required for python3.7 and higher.
 python:
- - "3.7"
- - "3.6"
- - "2.7"
+  - "2.7"
+  - "3.6"
+  - "3.7"
+env:
+  global:
+    - PIPENV_VERBOSITY=-1
+    - PYTHON_PIP_VERSION=18.1
+    - PYTHON_PIPENV_VERSION=2018.11.26
+  matrix:
+    - TASKWARRIOR_VERSION=2.5.0
+    - TASKWARRIOR_VERSION=2.5.1
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install uuid-dev
-  - wget http://taskwarrior.org/download/task-2.4.4.tar.gz
-  - gunzip task-2.4.4.tar.gz
-  - tar xf task-2.4.4.tar
-  - cd task-2.4.4
+  - sudo apt-get install -y gnutls-dev pandoc uuid-dev
+  - wget http://taskwarrior.org/download/task-$TASKWARRIOR_VERSION.tar.gz
+  - gunzip task-$TASKWARRIOR_VERSION.tar.gz
+  - tar xf task-$TASKWARRIOR_VERSION.tar
+  - cd task-$TASKWARRIOR_VERSION
   - cmake .
   - make
   - sudo make install
-  - sudo apt-get install -qq pandoc
   - task --version
-  - pip install --upgrade pip
-  - pip install taskw
-  - pip install mock
-  - pip install responses
-  - pip install PySimpleSOAP
+  - pip install pip==$PYTHON_PIP_VERSION
+  - pip install pipenv==$PYTHON_PIPENV_VERSION
   - cd $TRAVIS_BUILD_DIR
-env:
-  - JIRAVERSION=2.0.0
-  - JIRAVERSION=1.0.10
-  - JIRAVERSION=1.0.7
-
-matrix:
-  exclude:
-  - python: "3.7"
-    env: JIRAVERSION=1.0.10
-  - python: "3.7"
-    env: JIRAVERSION=1.0.7
-
 install:
-  - pip install .[jira,megaplan,activecollab,bts,bugzilla,trac,gmail]
-  - pip install codecov
-  - pip install coverage
+  - pipenv install --deploy --dev
 script: nosetests -w tests --with-coverage --cover-branches --cover-package=bugwarrior -v
 after_success: codecov
 notifications:
-    email: true
+  email:
     on_success: change
     on_failure: always
