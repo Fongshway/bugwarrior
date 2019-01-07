@@ -283,6 +283,7 @@ class JiraService(IssueService):
         self.description_length = self.config.get(
             'description_length', default=100, to_type=int
         )
+
         self.sprint_field_names = []
         if self.import_sprints_as_tags:
             field_names = [field for field in self.jira.fields()
