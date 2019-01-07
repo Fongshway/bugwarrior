@@ -27,6 +27,7 @@ TEST_THREAD = {
                     ]
                 },
                 "snippet": "Bugwarrior is great",
+                "internalDate": 1546722467000,
                 "threadId": "1234",
                 "labelIds": [
                     "IMPORTANT",
