@@ -62,7 +62,6 @@ class JiraIssue(Issue):
     FIX_VERSION = 'jirafixversion'
     CREATED_AT = 'jiracreatedts'
     STATUS ='jirastatus'
-    DUE_BY = 'jiraduedate'
 
     UDAS = {
         ISSUE_TYPE: {
@@ -101,10 +100,6 @@ class JiraIssue(Issue):
             'type': 'string',
             'label': "Jira Status"
         },
-        DUE_BY: {
-            'type': 'date',
-            'label': 'Due By'
-        },
     }
     UNIQUE_KEY = (URL, )
 
@@ -129,7 +124,6 @@ class JiraIssue(Issue):
             'tags': self.get_tags(),
             'due': self.get_due(),
             'entry': self.get_entry(),
-            'due': self.get_duedate(),
 
             self.ISSUE_TYPE: self.get_issue_type(),
             self.URL: self.get_url(),
@@ -138,8 +132,7 @@ class JiraIssue(Issue):
             self.SUMMARY: self.get_summary(),
             self.ESTIMATE: self.get_estimate(),
             self.FIX_VERSION: self.get_fix_version(),
-            self.STATUS: self.get_status(),
-            self.DUE_BY: self.get_duedate()
+            self.STATUS: self.get_status()
         }
 
     def get_entry(self):
@@ -147,18 +140,6 @@ class JiraIssue(Issue):
         # Convert timestamp to an offset-aware datetime
         date = self.parse_date(created_at).astimezone(tzutc()).replace(microsecond=0)
         return date
-
-    def get_duedate(self):
-        if not self.origin['import_due_dates']:
-            return None
-
-        date = self.record['fields']['duedate']
-        if date:
-            date = self.parse_date(date, 'LOCAL_TIMEZONE')
-            new_date = date.replace(hour=23, minute=59, second=59)
-            return new_date
-
-        return None
 
     def get_tags(self):
         return self._get_tags_from_labels() + self._get_tags_from_sprints()
@@ -299,9 +280,6 @@ class JiraService(IssueService):
         self.label_template = self.config.get(
             'label_template', default='{{label}}', to_type=six.text_type
         )
-        self.import_due_dates = self.config.get(
-            'import_due_dates', default=False, to_type=asbool
-        )
         self.description_length = self.config.get(
             'description_length', default=100, to_type=int
         )
@@ -325,7 +303,6 @@ class JiraService(IssueService):
     def get_service_metadata(self):
         return {
             'url': self.url,
-            'import_due_dates': self.import_due_dates,
             'import_labels_as_tags': self.import_labels_as_tags,
             'import_sprints_as_tags': self.import_sprints_as_tags,
             'sprint_field_names': self.sprint_field_names,
