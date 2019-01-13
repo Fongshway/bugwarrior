@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "244b83ea5a077305d9867a3c7c74b119d6b141b067d9fdffe4634c1dfe1b9b9d"
+            "sha256": "1920e15a468207e64262dac0f641bbfecba5cc6b5f029fd27631621f05405717"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -357,11 +357,11 @@
         },
         "pytz": {
             "hashes": [
-                "sha256:31cb35c89bd7d333cd32c5f278fca91b523b0834369e757f4c5641ea252236ca",
-                "sha256:8e0f8568c118d3077b46be7d654cc8167fa916092e28320cde048e54bfc9f1e6"
+                "sha256:32b0891edff07e28efe91284ed9c31e123d84bea3fd98e1f72be2508f43ef8d9",
+                "sha256:d5f05e487007e29e03409f9398d074e158d920d36eb82eaf66fb1136b0c5374c"
             ],
             "index": "pypi",
-            "version": "==2018.7"
+            "version": "==2018.9"
         },
         "requests": {
             "hashes": [
@@ -373,10 +373,10 @@
         },
         "requests-oauthlib": {
             "hashes": [
-                "sha256:8886bfec5ad7afb391ed5443b1f697c6f4ae98d0e5620839d8b4499c032ada3f",
-                "sha256:e21232e2465808c0e892e0e4dbb8c2faafec16ac6dc067dd546e9b466f3deac8"
+                "sha256:be76f2bb72ca5525998e81d47913e09b1ca8b7957ae89b46f787a79e68ad5e61",
+                "sha256:eabd8eb700ebed81ba080c6ead96d39d6bdc39996094bd23000204f6965786b0"
             ],
-            "version": "==1.0.0"
+            "version": "==1.1.0"
         },
         "requests-toolbelt": {
             "hashes": [
@@ -401,10 +401,9 @@
             "version": "==1.12.0"
         },
         "taskw": {
-            "hashes": [
-                "sha256:fadd8afc12df026c3c2d39b633c55d3337f7dca95602fce2239455a048bc85fe"
-            ],
-            "version": "==1.2.0"
+            "editable": true,
+            "git": "https://github.com/Fongshway/taskw.git",
+            "ref": "c558bafb607d616bc737c0d5d0da42d85b9a736e"
         },
         "uritemplate": {
             "hashes": [
