@@ -7,19 +7,11 @@ name = "pypi"
 bugwarrrior = {editable = true, extras = ["activecollab", "bts", "bugzilla", "gmail", "jira", "megaplan", "trac"], path = "."}
 taskw = {editable = true, git = "https://github.com/Fongshway/taskw.git"}
 chardet = "*"
-click = "*"
-"dogpile.cache" = "*"
-future = "*"
 httplib2 = "*"
-Jinja2 = "*"
 kitchen = "*"
 lockfile = "*"
 MarkupSafe = "*"
-python-dateutil = "*"
 pytz = "*"
-requests = "*"
-six = "*"
-urllib3 = "*"
 
 [dev-packages]
 codecov = "*"
