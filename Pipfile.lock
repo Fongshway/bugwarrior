@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "ab2188a7bfedb96ffabfd13e7723bc84b5a6f6fb01c04f9f4e9f9354dcbd21f9"
+            "sha256": "faab29c18043e2cf8e895085d3fe333efe286dce792837f111bd65b98fef087b"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -174,7 +174,6 @@
                 "sha256:23914b5487dfe8ef09db6656d6d63afb0cf3054ad9ebc50868ddc8e166b5f8e8",
                 "sha256:a18121c7c72a56689efbf1aef990139ad940fee1e64c6f2458831736cd593600"
             ],
-            "index": "pypi",
             "version": "==0.12.3"
         },
         "idna": {
@@ -210,7 +209,6 @@
                 "sha256:6aed02de03cba24efabcd600b30540140634fc06cfa603822d508d5361e9f799",
                 "sha256:6c3cb24f344923d30b2785d5ad75182c8ea7ac1b6171b08657258ec7429d50fa"
             ],
-            "index": "pypi",
             "version": "==0.12.2"
         },
         "markupsafe": {
@@ -352,7 +350,6 @@
                 "sha256:303879e36b721603cc54604edcac9d20401bdbe31e1e4fdee5b9f98d5d31dfda",
                 "sha256:d747dd3d23d77ef44c6a3526e274af6efeb0a6f1afd5a69ba4d5be4098c8e141"
             ],
-            "index": "pypi",
             "version": "==2019.1"
         },
         "requests": {
@@ -391,9 +388,10 @@
             "version": "==1.12.0"
         },
         "taskw": {
-            "editable": true,
-            "git": "https://github.com/Fongshway/taskw.git",
-            "ref": "29a726a51218fa6d9f4e5511e026c5fb9666dd33"
+            "hashes": [
+                "sha256:fadd8afc12df026c3c2d39b633c55d3337f7dca95602fce2239455a048bc85fe"
+            ],
+            "version": "==1.2.0"
         },
         "uritemplate": {
             "hashes": [
