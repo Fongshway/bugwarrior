@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "4be7cc944033e9e483da78425e13cac345bea1bdd7d52cdaa4e7a9767e372728"
+            "sha256": "171fa26eabe441c42fec6a1ec955f8a21f7b49dc6081dce229611e22b7bbb0fc"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -398,10 +398,9 @@
             "version": "==1.12.0"
         },
         "taskw": {
-            "hashes": [
-                "sha256:fadd8afc12df026c3c2d39b633c55d3337f7dca95602fce2239455a048bc85fe"
-            ],
-            "version": "==1.2.0"
+            "editable": true,
+            "git": "https://github.com/Fongshway/taskw.git",
+            "ref": "29a726a51218fa6d9f4e5511e026c5fb9666dd33"
         },
         "uritemplate": {
             "hashes": [
