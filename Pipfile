@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 bugwarrrior = {editable = true, extras = ["activecollab", "bts", "bugzilla", "gmail", "jira", "megaplan", "trac"], path = "."}
+taskw = {editable = true, git = "https://github.com/Fongshway/taskw.git"}
 chardet = "*"
 click = "*"
 "dogpile.cache" = "*"
