@@ -1,7 +1,6 @@
 language: python
 dist: xenial  # Required for python3.7 and higher.
 python:
-  - "2.7"
   - "3.6"
   - "3.7"
 env:
