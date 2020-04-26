@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-bugwarrrior = {editable = true, extras = ["activecollab", "bts", "bugzilla", "gmail", "jira", "megaplan", "trac"], path = "."}
+bugwarrrior = {editable = true, extras = ["activecollab", "bts", "bugzilla", "gmail", "jira", "megaplan", "phabricator", "trac"], path = "."}
 chardet = "*"
 kitchen = "*"
 MarkupSafe = "*"
