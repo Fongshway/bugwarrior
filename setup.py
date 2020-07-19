@@ -47,7 +47,7 @@ setup(name='bugwarrior',
           bts=["PySimpleSOAP", "python-debianbts>=2.6.1"],
           trac=["offtrac"],
           bugzilla=["python-bugzilla>=2.0.0"],
-          gmail=["google-api-python-client", "oauth2client<4.0.0"],
+          gmail=["google-api-python-client", "google-auth-oauthlib"],
           phabricator=["phabricator"],
       ),
       tests_require=[
