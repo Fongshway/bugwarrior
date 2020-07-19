@@ -142,7 +142,6 @@ class GmailService(IssueService):
         """
         with self.AUTHENTICATION_LOCK:
             log.info('Starting authentication for %s', self.target)
-            # store = oauth2client.file.Storage(self.credentials_path)
             credentials = None
             # The file token.pickle stores the user's access and refresh tokens, and is
             # created automatically when the authorization flow completes for the first
