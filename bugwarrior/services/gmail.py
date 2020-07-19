@@ -7,7 +7,6 @@ import re
 import time
 
 import googleapiclient.discovery
-import httplib2
 from google.auth.transport.requests import Request
 from google_auth_oauthlib.flow import InstalledAppFlow
 
@@ -105,6 +104,7 @@ class GmailService(IssueService):
     APPLICATION_NAME = 'Bugwarrior Gmail Service'
     SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
     DEFAULT_CLIENT_SECRET_PATH = '~/.gmail_client_secret.json'
+
     ISSUE_CLASS = GmailIssue
     CONFIG_PREFIX = 'gmail'
     AUTHENTICATION_LOCK = multiprocessing.Lock()
@@ -143,9 +143,9 @@ class GmailService(IssueService):
         with self.AUTHENTICATION_LOCK:
             log.info('Starting authentication for %s', self.target)
             credentials = None
-            # The file token.pickle stores the user's access and refresh tokens, and is
-            # created automatically when the authorization flow completes for the first
-            # time.
+            # The self.credentials_path file stores the user's access and refresh
+            # tokens as a pickle, and is created automatically when the
+            # authorization flow completes for the first time.
             if os.path.exists(self.credentials_path):
                 with open(self.credentials_path, 'rb') as token:
                     credentials = pickle.load(token)
