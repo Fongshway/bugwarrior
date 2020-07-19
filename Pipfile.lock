@@ -177,6 +177,13 @@
             ],
             "version": "==0.0.4"
         },
+        "google-auth-oauthlib": {
+            "hashes": [
+                "sha256:88d2cd115e3391eb85e1243ac6902e76e77c5fe438b7276b297fbe68015458dd",
+                "sha256:a92a0f6f41a0fb6138454fbc02674e64f89d82a244ea32f98471733c8ef0e0e1"
+            ],
+            "version": "==0.4.1"
+        },
         "googleapis-common-protos": {
             "hashes": [
                 "sha256:560716c807117394da12cecb0a54da5a451b5cf9866f1d37e9a5e2329a665351",
@@ -270,12 +277,6 @@
                 "sha256:0aad68a99c31b5f12e56c4a330b2daa000d16c07828a23f3f6e872d5fdd713a4"
             ],
             "version": "==1.4"
-        },
-        "oauth2client": {
-            "hashes": [
-                "sha256:5b5b056ec6f2304e7920b632885bd157fa71d1a7f3ddd00a43b1541a8d1a2460"
-            ],
-            "version": "==3.0.0"
         },
         "oauthlib": {
             "extras": [
