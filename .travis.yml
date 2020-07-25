@@ -3,11 +3,12 @@ dist: xenial  # Required for python3.7 and higher.
 python:
   - "3.6"
   - "3.7"
+  - "3.8"
 env:
   global:
     - PIPENV_VERBOSITY=-1
-    - PYTHON_PIP_VERSION=18.1
-    - PYTHON_PIPENV_VERSION=2018.11.26
+    - PYTHON_PIP_VERSION=20.1.1
+    - PYTHON_PIPENV_VERSION=2020.6.2
   matrix:
     - TASKWARRIOR_VERSION=2.5.0
     - TASKWARRIOR_VERSION=2.5.1
