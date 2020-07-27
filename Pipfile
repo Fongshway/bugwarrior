@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 bugwarrior = {editable = true, extras = ["activecollab", "bts", "bugzilla", "gmail", "jira", "megaplan", "phabricator", "trac"], path = "."}
 chardet = "*"
+importlib-metadata = "*"  # for python_version < "3.8" compatibility
 kitchen = "*"
 MarkupSafe = "*"
 
@@ -17,4 +18,4 @@ nose = "*"
 responses = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.8"
