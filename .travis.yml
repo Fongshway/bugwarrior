@@ -1,45 +1,35 @@
 language: python
 dist: bionic
-arch:
- - AMD64
- - ppc64le
 python:
- - "3.7"
- - "3.6"
+  - "3.7"
+  - "3.8"
+env:
+  global:
+    - PIPENV_VERBOSITY=-1
+    - PYTHON_PIP_VERSION=21.0.1
+    - PYTHON_PIPENV_VERSION=2020.11.15
+  matrix:
+    - TASKWARRIOR_VERSION=2.5.1
+    - TASKWARRIOR_VERSION=2.5.3
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install uuid-dev
-  - wget http://taskwarrior.org/download/task-2.4.4.tar.gz
-  - gunzip task-2.4.4.tar.gz
-  - tar xf task-2.4.4.tar
-  - cd task-2.4.4
+  - sudo apt-get install -y gnutls-dev pandoc uuid-dev
+  - wget http://taskwarrior.org/download/task-$TASKWARRIOR_VERSION.tar.gz
+  - gunzip task-$TASKWARRIOR_VERSION.tar.gz
+  - tar xf task-$TASKWARRIOR_VERSION.tar
+  - cd task-$TASKWARRIOR_VERSION
   - cmake .
   - make
   - sudo make install
-  - sudo apt-get install -qq pandoc
   - task --version
-  - pip install --upgrade pip
-  - pip install taskw
-  - pip install responses
-  - pip install PySimpleSOAP
-  - pip install phabricator
-  - | 
-   if [[ "$TRAVIS_CPU_ARCH" == "ppc64le" ]]; then
-     sudo chown -Rv $USER:$GROUP ~/.cache/pip/wheels
-   fi
+  - pip install pip==$PYTHON_PIP_VERSION
+  - pip install pipenv==$PYTHON_PIPENV_VERSION
   - cd $TRAVIS_BUILD_DIR
-env:
-  - JIRAVERSION=2.0.0
-  - JIRAVERSION=1.0.10
-
-matrix:
-  exclude:
-  - python: "3.7"
-    env: JIRAVERSION=1.0.10
-
 install:
-  - pip install .[jira,megaplan,activecollab,bts,bugzilla,trac,gmail,kanboard]
-  - pip install codecov
-  - pip install pytest-cov
+  - pipenv install --deploy --dev
 script: pytest --cov=bugwarrior --cov-branch tests
 after_success: codecov
+notifications:
+  email:
+    on_success: change
+    on_failure: always
